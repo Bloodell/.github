@@ -111,18 +111,17 @@ Interface responsável pela interação dos usuários com o sistema e consumo da
 
 ## Entrega 01
 
-**Status:** A definir
+Data: 31/08 Status: Concluído
 
-### Descrição
+Descrição
 
-A definir.
+Levantamento das histórias de usuário do projeto, claras, concisas e completas, com detalhes de negócio na descrição e cenários de validação em BDD.
 
-### Artefatos
+Artefatos
+📄 Documentação: [Histórias de Usuário](https://github.com/gabrielgandrade/Bloodell_Historias_De_Usuario)
+📄 Documentação: [Personas](https://github.com/gabrielgandrade/Bloodell_Personas)
+🎨 Protótipo Lo-Fi: [Figma](https://www.figma.com/make/LA6ILypFBbqo9QBfuR6eeG/High-Fidelity-Web-App-Prototype?code-node-id=0-6&fullscreen=1)
 
-* [Documentação](#)
-* [Apresentação](#)
-* [Screenshots](#)
-* [Outros artefatos](#)
 
 ---
 
