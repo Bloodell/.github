@@ -111,9 +111,10 @@ Interface responsável pela interação dos usuários com o sistema e consumo da
 
 ## Entrega 01
 
-Data: 31/08 Status: Concluído
+Data: 31/08 
+Status: Concluído
 
-Descrição
+Descrição:
 
 Levantamento das histórias de usuário do projeto, claras, concisas e completas, com detalhes de negócio na descrição e cenários de validação em BDD.
 
