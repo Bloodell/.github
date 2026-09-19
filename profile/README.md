@@ -1,29 +1,29 @@
-# 🩸 Bloodell
+# Bloodell
 
 > Plataforma para gestão, distribuição e monitoramento de hemocomponentes na rede de sangue.
 
-## 📋 Sobre o projeto
+## Sobre o projeto
 
-O **Bloodell** é uma aplicação web desenvolvida para apoiar a gestão e distribuição de hemocomponentes na rede de sangue.
+O Bloodell é uma aplicação web desenvolvida para apoiar a gestão e distribuição de hemocomponentes na rede de sangue.
 
 O sistema busca integrar diferentes etapas do processo, desde o gerenciamento de estoque e recebimento de requisições hospitalares até a alocação de bolsas compatíveis, priorização por validade (FEFO), roteirização de entregas e monitoramento da cadeia fria.
 
-A solução é inspirada no fluxo da **Hemorrede/SUS**, contemplando centros de coleta e doação, hemocentros de processamento e controle, estoques e hospitais.
+A solução é inspirada no fluxo da Hemorrede/SUS, contemplando centros de coleta e doação, hemocentros de processamento e controle, estoques e hospitais.
 
-Todos os dados utilizados no projeto são **sintéticos**, não envolvendo informações reais de doadores ou pacientes.
+Todos os dados utilizados no projeto são sintéticos, não envolvendo informações reais de doadores ou pacientes.
 
-> ⚠️ **Aviso:** A compatibilidade ABO/Rh implementada no projeto possui finalidade exclusivamente didática e não substitui protocolos clínicos ou sistemas oficiais da Hemorrede/SUS.
+> **Aviso:** a compatibilidade ABO/Rh implementada no projeto possui finalidade exclusivamente didática e não substitui protocolos clínicos ou sistemas oficiais da Hemorrede/SUS.
 
 ---
 
-## 🎯 Problema
+## Problema
 
 A rede de sangue precisa garantir que o componente correto seja disponibilizado:
 
-* 🩸 Para o paciente adequado;
-* 🏥 No hospital correto;
-* ⏱️ Dentro do tempo necessário;
-* ❄️ Mantendo as condições adequadas de armazenamento e transporte.
+* para o paciente adequado;
+* no hospital correto;
+* dentro do tempo necessário;
+* mantendo as condições adequadas de armazenamento e transporte.
 
 Falhas nesse processo podem contribuir para desabastecimento, descarte de hemocomponentes por vencimento e dificuldades na distribuição.
 
@@ -31,22 +31,22 @@ O Bloodell busca centralizar essas informações e auxiliar na tomada de decisõ
 
 ---
 
-## 💡 Solução
+## Solução
 
 A plataforma será responsável por integrar:
 
-* 🩸 Gestão de estoque de hemocomponentes;
-* 🏥 Requisições hospitalares;
-* 🔬 Compatibilidade ABO/Rh;
-* ⏳ Priorização por validade utilizando **FEFO (First Expired, First Out)**;
-* 🗺️ Roteirização de entregas;
-* ❄️ Monitoramento da cadeia fria;
-* 📍 Simulação de localização e telemetria;
-* 📊 Indicadores de estoque e demanda.
+* gestão de estoque de hemocomponentes;
+* requisições hospitalares;
+* compatibilidade ABO/Rh;
+* priorização por validade utilizando FEFO (First Expired, First Out);
+* roteirização de entregas;
+* monitoramento da cadeia fria;
+* simulação de localização e telemetria;
+* indicadores de estoque e demanda.
 
 ---
 
-## 🏗️ Arquitetura
+## Arquitetura
 
 O projeto está dividido em dois repositórios independentes:
 
@@ -56,49 +56,54 @@ O projeto está dividido em dois repositórios independentes:
              ┌─────────┴─────────┐
              │                   │
              ▼                   ▼
-       🖥️ Front-end          ⚙️ Back-end
+          Front-end           Back-end
              │                   │
              │                   │
              └─────── API ───────┘
                          │
                          ▼
-                    🗄️ Banco de Dados
+                   Banco de Dados
 ```
 
-### ⚙️ Back-end
+### Back-end
 
-Desenvolvido em **Java com Spring Boot**, responsável pela API REST, regras de negócio, processamento dos dados e comunicação com o banco de dados.
+Desenvolvido em Java com Spring Boot, responsável pela API REST, regras de negócio, processamento dos dados e comunicação com o banco de dados.
 
-➡️ **[Acessar repositório do Back-end](#)**
+Repositório: [Bloodell Backend](#)
 
-### 🖥️ Front-end
+### Front-end
 
 Interface responsável pela interação dos usuários com o sistema e consumo da API disponibilizada pelo back-end.
 
-➡️ **[Acessar repositório do Front-end](#)**
+Repositório: [Bloodell Frontend](#)
 
 ---
 
-## 🛠️ Tecnologias
+## Tecnologias
 
 ### Back-end
 
 * Java
 * Spring Boot
-* API REST
-* A definir
+* API REST (padrão `/api/v1`)
+* Maven
+* Spring Data JPA
 
 ### Front-end
 
-* A definir
+* React
+* Vite
+* TypeScript
 
 ### Banco de dados
 
-* A definir
+* PostgreSQL
 
 ### Infraestrutura
 
-* A definir
+* Docker e Docker Compose
+* GitHub Actions (CI/CD)
+* Nginx (proxy reverso com TLS na borda pública)
 
 ### Ferramentas
 
@@ -107,34 +112,42 @@ Interface responsável pela interação dos usuários com o sistema e consumo da
 
 ---
 
-# 📦 Entregas
+## Entregas
 
-## Entrega 01
+### Entrega 01
 
-Data: 31/08 
-Status: Concluído
+**Data:** 31/08
+**Status:** Concluído
 
-Descrição:
+**Descrição:** levantamento das histórias de usuário do projeto, claras, concisas e completas, com detalhes de negócio na descrição e cenários de validação em BDD.
 
-Levantamento das histórias de usuário do projeto, claras, concisas e completas, com detalhes de negócio na descrição e cenários de validação em BDD.
+**Artefatos**
 
-Artefatos
 * Documentação: [Histórias de Usuário](https://github.com/gabrielgandrade/Bloodell_Historias_De_Usuario)
 * Documentação: [Personas](https://github.com/gabrielgandrade/Bloodell_Personas)
 * Protótipo Lo-Fi: [Figma](https://www.figma.com/make/LA6ILypFBbqo9QBfuR6eeG/High-Fidelity-Web-App-Prototype?code-node-id=0-6&fullscreen=1)
 
+### Entrega 02
 
----
+**Data prevista:** 21/09
+**Status:** A definir
 
-## Entrega 02
+**Descrição:** a definir.
+
+**Artefatos**
+
+* [Documentação](#)
+* [Apresentação](#)
+* [Screenshots](#)
+* [Outros artefatos](#)
+
+### Entrega 03
 
 **Status:** A definir
 
-### Descrição
+**Descrição:** a definir.
 
-A definir.
-
-### Artefatos
+**Artefatos**
 
 * [Documentação](#)
 * [Apresentação](#)
@@ -143,48 +156,31 @@ A definir.
 
 ---
 
-## Entrega 03
-
-**Status:** A definir
-
-### Descrição
-
-A definir.
-
-### Artefatos
-
-* [Documentação](#)
-* [Apresentação](#)
-* [Screenshots](#)
-* [Outros artefatos](#)
-
----
-
-# 🎓 Contexto acadêmico
+## Contexto acadêmico
 
 O Bloodell é um projeto interdisciplinar que integra conhecimentos de diferentes áreas do curso.
 
 Entre as principais competências trabalhadas estão:
 
-* Programação Orientada a Objetos;
-* Desenvolvimento de APIs REST;
-* Estruturas de dados;
-* Grafos e caminhos mínimos;
-* Filas de prioridade;
-* Hash;
-* Compatibilidade e matching;
-* Estatística descritiva;
-* Probabilidade;
-* Concorrência;
+* programação orientada a objetos;
+* desenvolvimento de APIs REST;
+* estruturas de dados;
+* grafos e caminhos mínimos;
+* filas de prioridade;
+* hash;
+* compatibilidade e matching;
+* estatística descritiva;
+* probabilidade;
+* concorrência;
 * CI/CD;
-* Computação em nuvem;
-* Arquitetura de redes;
-* Telemetria;
-* Trabalho em equipe e integração entre áreas.
+* computação em nuvem;
+* arquitetura de redes;
+* telemetria;
+* trabalho em equipe e integração entre áreas.
 
 ---
 
-# ⚠️ Limitações e cuidados
+## Limitações e cuidados
 
 * O projeto utiliza exclusivamente dados sintéticos.
 * Não serão utilizadas informações reais de pacientes ou doadores.
@@ -197,7 +193,7 @@ Entre as principais competências trabalhadas estão:
 
 ---
 
-# 👥 Equipe
+## Equipe
 
 | Nome             | E-mail CESAR School                           |
 | ---------------- | --------------------------------------------- |
@@ -210,16 +206,16 @@ Entre as principais competências trabalhadas estão:
 
 ---
 
-# 📚 Repositórios
+## Repositórios
 
-| Repositório            | Descrição                                   |
-| ---------------------- | ------------------------------------------- |
-| **Bloodell**          | Página principal e documentação do projeto  |
-| **Bloodell Backend**  | API e regras de negócio em Java/Spring Boot |
-| **Bloodell Frontend** | Interface web da aplicação                  |
+| Repositório           | Descrição                                    |
+| ---------------------- | --------------------------------------------- |
+| Bloodell               | Página principal e documentação do projeto    |
+| Bloodell Backend       | API e regras de negócio em Java/Spring Boot   |
+| Bloodell Frontend      | Interface web da aplicação                    |
 
 ---
 
-## 📄 Licença
+## Licença
 
 A definir.
