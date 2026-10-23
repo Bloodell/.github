@@ -153,8 +153,9 @@ Repositório: [Bloodell Frontend](https://github.com/Bloodell/bloodell-frontend)
 #### Histórias implementadas
 
 <p align="center">
-  <img src="assets/postit-us05.svg" width="380" alt="Post-it US05: Como Técnico de Hemoterapia, quero ver as bolsas organizadas por tipo sanguíneo e hemocomponente, para acompanhar o estoque e identificar reposição e risco de vencimento.">
-  <img src="assets/postit-us06.svg" width="380" alt="Post-it US06: Como responsável pelas solicitações do hospital, quero registrar uma requisição com hemocomponente, quantidade e prioridade, para que o hemocentro organize o atendimento.">
+  <img width="250" height="250" alt="Post-it US05: Como Técnico de Hemoterapia, quero ver as bolsas organizadas por tipo sanguíneo e hemocomponente, para acompanhar o estoque e identificar reposição e risco de vencimento." src="https://github.com/user-attachments/assets/e6214f8e-4a5e-4b3a-b9f5-ae2d3a7b53fb" />
+
+  <img width="250" height="250" alt="Post-it US06: Como responsável pelas solicitações do hospital, quero registrar uma requisição com hemocomponente, quantidade e prioridade, para que o hemocentro organize o atendimento." src="https://github.com/user-attachments/assets/e7c03d6e-bfb5-49d4-82cf-0b7584f90f35" />
 </p>
 
 ##### US05 · Visualizar e controlar o estoque
