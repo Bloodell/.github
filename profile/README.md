@@ -206,7 +206,7 @@ Repositório: [Bloodell Frontend](https://github.com/Bloodell/bloodell-frontend)
 As tarefas e os bugs em aberto ficam nas [issues do backend](https://github.com/Bloodell/bloodell-backend/issues).
 
 <p align="center">
-  <img src="assets/issues-entrega-03.png" width="760" alt="Print da tela de issues do repositório bloodell-backend">
+  <img width="780" alt="Print da tela de issues do repositório bloodell-backend" src="https://github.com/user-attachments/assets/0d8ee9aa-ff18-485c-b69e-ce53092e1547" />
 </p>
 
 **Artefatos**
