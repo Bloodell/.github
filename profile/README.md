@@ -192,8 +192,8 @@ Repositório: [Bloodell Frontend](https://github.com/Bloodell/bloodell-frontend)
 
 | Vídeo | Link |
 | --- | --- |
-| 🎬 Sistema funcionando: as novas histórias na interface | _[adicionar link do YouTube]_ |
-| 🎬 Explicação do código das histórias implementadas | _[adicionar link do YouTube]_ |
+| 🎬 Sistema funcionando: as novas histórias na interface | [YouTube](https://youtu.be/Yp17E9dM5S4?si=YXsrLUCkMDtjM0Lk) |
+| 🎬 Explicação do código das histórias implementadas | [YouTube](https://youtu.be/wv1onbPYYUY?si=n-0Utz8xnUSnZDPM) |
 
 #### Versionamento
 
