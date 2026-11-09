@@ -91,9 +91,10 @@ Repositório: [Bloodell Frontend](https://github.com/Bloodell/bloodell-frontend)
 
 ### Front-end
 
-* React
-* Vite
+* Next.js (React)
 * TypeScript
+* Tailwind CSS e componentes no padrão shadcn/ui
+* MapLibre (mapa da Central logística)
 
 ### Banco de dados
 
@@ -216,6 +217,100 @@ As tarefas e os bugs em aberto ficam nas [issues do backend](https://github.com/
 * [Documentação da API (Swagger)](https://34.235.158.105/swagger-ui.html)
 * [Evidências de execução](https://github.com/Bloodell/bloodell-backend/tree/main/docs/evidencias/e1)
 
+### Entrega 04
+
+**Data:** 09/11
+**Status:** Concluída
+
+**Descrição:** acesso seguro ao sistema e gestão das contas da equipe — login com JWT, cadastro, consulta e atualização de usuários pelo administrador, e JWT obrigatório em produção — além da **Central logística** no frontend, com mapa de rastreamento das entregas e nova identidade visual.
+
+#### Histórias implementadas
+
+<p align="center">
+  <img width="200" height="200" alt="Post-it US-E4-01: Como integrante da equipe, quero entrar com e-mail e senha e receber um token, para acessar o sistema com segurança." src="https://raw.githubusercontent.com/Bloodell/.github/main/profile/entrega-04/us-e4-01.png" />
+  <img width="200" height="200" alt="Post-it US-E4-02: Como administrador, quero cadastrar integrantes com perfil e senha inicial, para que cada um tenha sua conta." src="https://raw.githubusercontent.com/Bloodell/.github/main/profile/entrega-04/us-e4-02.png" />
+  <img width="200" height="200" alt="Post-it US-E4-03: Como administrador, quero listar e consultar as contas, para saber quem tem acesso e com qual perfil." src="https://raw.githubusercontent.com/Bloodell/.github/main/profile/entrega-04/us-e4-03.png" />
+  <img width="200" height="200" alt="Post-it US-E4-04: Como administrador, quero atualizar nome, e-mail e perfil de uma conta, para manter os acessos corretos." src="https://raw.githubusercontent.com/Bloodell/.github/main/profile/entrega-04/us-e4-04.png" />
+  <img width="200" height="200" alt="Post-it US-E4-05: Como operador de logística, quero ver veículos e entregas no mapa, para acompanhar o transporte das bolsas." src="https://raw.githubusercontent.com/Bloodell/.github/main/profile/entrega-04/us-e4-05.png" />
+</p>
+
+##### US-E4-01 · Entrar no sistema (login JWT)
+
+> **Como** integrante da equipe do hemocentro ou do hospital, **quero** entrar com e-mail e senha e receber um token **para** acessar o sistema de forma identificada e segura.
+
+| Critério de aceite | Como foi atendido | Onde ver |
+| --- | --- | --- |
+| Login devolve token com validade | Senha conferida com BCrypt; resposta traz `accessToken`, `expiresIn` e o perfil | `POST /api/v1/auth/login` |
+| Credencial errada não revela o motivo | E-mail inexistente, senha errada ou conta sem hash válido respondem o mesmo 401 | `AutenticacaoIT` |
+| Perfil sempre atualizado | `/auth/me` reconsulta o banco em vez de confiar no token | `GET /api/v1/auth/me` |
+| API protegida | Com a autenticação ligada, toda rota de negócio exige `Bearer`; em produção ela é obrigatória (PR #39) | `AutenticacaoProducaoIT` |
+
+##### US-E4-02 · Cadastrar integrantes
+
+> **Como** administrador, **quero** cadastrar integrantes com nome, e-mail, perfil e senha inicial **para** que cada pessoa tenha sua própria conta.
+
+| Critério de aceite | Como foi atendido | Onde ver |
+| --- | --- | --- |
+| Só ADMIN cadastra | Sem token → 401; outro perfil → 403 | `POST /api/v1/usuarios` |
+| E-mail único | E-mail repetido (ignorando maiúsculas) → 409 | `CadastroDeUsuarioIT` |
+| Resposta segura | 201 com id, nome, e-mail e perfil — nunca senha ou hash | [contrato](https://github.com/Bloodell/bloodell-backend/blob/dev/docs/cadastro-usuarios-card-4.md) |
+
+##### US-E4-03 · Consultar contas
+
+> **Como** administrador, **quero** listar e consultar as contas **para** saber quem tem acesso e com qual perfil.
+
+| Critério de aceite | Como foi atendido | Onde ver |
+| --- | --- | --- |
+| Lista paginada | Até 100 por página, ordem fixa por ID | `GET /api/v1/usuarios?page=&size=` |
+| Consulta por ID | Conta inexistente → 404; parâmetro inválido → 400 | `GET /api/v1/usuarios/{id}` · `ConsultaDeUsuarioIT` |
+
+##### US-E4-04 · Atualizar contas
+
+> **Como** administrador, **quero** atualizar nome, e-mail e perfil de uma conta **para** manter os acessos corretos.
+
+| Critério de aceite | Como foi atendido | Onde ver |
+| --- | --- | --- |
+| Atualização parcial | Campos omitidos são mantidos; senha e ID não mudam | `PATCH /api/v1/usuarios/{id}` |
+| Sempre resta um administrador | Rebaixar o último ADMIN → 409, inclusive com duas atualizações simultâneas | `AtualizacaoDeUsuarioIT` |
+| Efeito imediato | O login aceita o novo e-mail e as permissões seguem o perfil novo | [contrato](https://github.com/Bloodell/bloodell-backend/blob/dev/docs/atualizacao-usuarios-card-6.md) |
+
+##### US-E4-05 · Central logística (mapa de rastreamento)
+
+> **Como** operador de logística, **quero** ver no mapa os veículos e as entregas em andamento **para** acompanhar o transporte dos hemocomponentes.
+
+| Critério de aceite | Como foi atendido | Onde ver |
+| --- | --- | --- |
+| Mapa das entregas | Mapa MapLibre com hemocentros, hospitais e caminhões em 3D | Tela **Central logística** (`/rastreamento`) |
+| Dados reais da API | Entregas, unidades, requisições e veículos vêm da API, com estados de carregando, erro e vazio | `use-rastreamento.ts` |
+| Trajeto e posição | Rota pelas estradas (ou curva estimada, se o serviço de rotas falhar); posição pela telemetria ou estimada pelo tempo previsto | `rotas.ts`, `posicao.ts` |
+
+**Fora desta entrega:** tela de login no frontend e permissões por perfil nas demais rotas ([issue #34](https://github.com/Bloodell/bloodell-backend/issues/34)).
+
+#### Screencasts
+
+| Vídeo | Link |
+| --- | --- |
+| 🎬 Sistema funcionando: as novas histórias | _em breve_ |
+| 🎬 Explicação do código das histórias implementadas | _em breve_ |
+
+#### Versionamento
+
+* Mesmo fluxo da Entrega 03: branch por tarefa → pull request revisado → `dev` → `main`.
+* Commits no período: 30/10 (login JWT, PR #36), 31/10 (gestão de usuários, PR #38), 04/11 (redesign e Central logística, frontend PR #2), 06/11 (JWT em produção, PR #39).
+* Histórico: [commits do backend](https://github.com/Bloodell/bloodell-backend/commits/dev) · [commits do frontend](https://github.com/Bloodell/bloodell-frontend/commits/main) · [pull requests](https://github.com/Bloodell/bloodell-backend/pulls?q=is%3Apr).
+
+#### Issue tracker
+
+Tarefas e bugs nas [issues do backend](https://github.com/Bloodell/bloodell-backend/issues), com rótulos (`bug`, `enhancement`, `tech-debt`, `ci`, `U2`) e template de bug report.
+
+<!-- print da tela de issues: arraste a imagem aqui pelo editor do GitHub -->
+
+**Artefatos**
+
+* [Documentação da Entrega 04](https://github.com/Bloodell/bloodell-backend/blob/dev/docs/entrega-04.md)
+* [Roteiros dos screencasts](https://github.com/Bloodell/bloodell-backend/blob/dev/docs/entrega-04-roteiros.md)
+* Contratos: [login JWT](https://github.com/Bloodell/bloodell-backend/blob/dev/docs/autenticacao-jwt-card-1.md) · [cadastro](https://github.com/Bloodell/bloodell-backend/blob/dev/docs/cadastro-usuarios-card-4.md) · [consulta](https://github.com/Bloodell/bloodell-backend/blob/dev/docs/consulta-usuarios-card-5.md) · [atualização](https://github.com/Bloodell/bloodell-backend/blob/dev/docs/atualizacao-usuarios-card-6.md)
+
 ---
 
 ## Contexto acadêmico
@@ -257,14 +352,14 @@ Entre as principais competências trabalhadas estão:
 
 ## Equipe
 
-| Nome             | E-mail CESAR School                           |
-| ---------------- | --------------------------------------------- |
-| Alisson Santana  | [ass6@cesar.school](mailto:ass6@cesar.school) |
-| Arthur Abelardo  | [aacc@cesar.school](mailto:aacc@cesar.school) |
-| Carlos Henrique  | [chcf@cesar.school](mailto:chcf@cesar.school) |
-| Danilo Diniz     | [dgds@cesar.school](mailto:dgds@cesar.school) |
-| Gabriel Andrade  | [gga3@cesar.school](mailto:gga3@cesar.school) |
-| Roberto Henrique | [rhcf@cesar.school](mailto:rhcf@cesar.school) |
+| Nome             | E-mail CESAR School                           | Função |
+| ---------------- | --------------------------------------------- | ------ |
+| Alisson Santana  | [ass6@cesar.school](mailto:ass6@cesar.school) | Scrum Master |
+| Arthur Abelardo  | [aacc@cesar.school](mailto:aacc@cesar.school) | Desenvolvedor |
+| Carlos Henrique  | [chcf@cesar.school](mailto:chcf@cesar.school) | Desenvolvedor |
+| Danilo Diniz     | [dgds@cesar.school](mailto:dgds@cesar.school) | Desenvolvedor |
+| Gabriel Andrade  | [gga3@cesar.school](mailto:gga3@cesar.school) | Product Owner |
+| Roberto Henrique | [rhcf@cesar.school](mailto:rhcf@cesar.school) | Analista de requisitos e testes (QA) |
 
 ---
 
