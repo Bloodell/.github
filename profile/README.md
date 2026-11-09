@@ -308,7 +308,6 @@ Tarefas e bugs nas [issues do backend](https://github.com/Bloodell/bloodell-back
 **Artefatos**
 
 * [Documentação da Entrega 04](https://github.com/Bloodell/bloodell-backend/blob/dev/docs/entrega-04.md)
-* [Roteiros dos screencasts](https://github.com/Bloodell/bloodell-backend/blob/dev/docs/entrega-04-roteiros.md)
 * Contratos: [login JWT](https://github.com/Bloodell/bloodell-backend/blob/dev/docs/autenticacao-jwt-card-1.md) · [cadastro](https://github.com/Bloodell/bloodell-backend/blob/dev/docs/cadastro-usuarios-card-4.md) · [consulta](https://github.com/Bloodell/bloodell-backend/blob/dev/docs/consulta-usuarios-card-5.md) · [atualização](https://github.com/Bloodell/bloodell-backend/blob/dev/docs/atualizacao-usuarios-card-6.md)
 
 ---
