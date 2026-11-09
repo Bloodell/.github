@@ -301,9 +301,15 @@ As tarefas e os bugs em aberto ficam nas [issues do backend](https://github.com/
 
 #### Issue tracker
 
-Tarefas e bugs nas [issues do backend](https://github.com/Bloodell/bloodell-backend/issues), com rótulos (`bug`, `enhancement`, `tech-debt`, `ci`, `U2`) e template de bug report.
+Tarefas e bugs nas [issues do backend](https://github.com/Bloodell/bloodell-backend/issues), com rótulos (`bug`, `enhancement`, `tech-debt`, `ci`, `U2`, `Entrega 04`) e template de bug report. O milestone [Entrega 04](https://github.com/Bloodell/bloodell-backend/milestone/1) reúne uma issue por história (#41–#44) e o bug de segurança corrigido (#45), todas fechadas pelos PRs que as implementaram; a US-E4-05 está na [issue #3 do frontend](https://github.com/Bloodell/bloodell-frontend/issues/3).
 
-<!-- print da tela de issues: arraste a imagem aqui pelo editor do GitHub -->
+<p align="center">
+  <img width="780" alt="Print da tela de issues do repositório bloodell-backend" src="https://raw.githubusercontent.com/Bloodell/.github/main/profile/entrega-04/issues.png" />
+</p>
+
+<p align="center">
+  <img width="780" alt="Print do milestone Entrega 04 com as issues fechadas" src="https://raw.githubusercontent.com/Bloodell/.github/main/profile/entrega-04/milestone.png" />
+</p>
 
 **Artefatos**
 
